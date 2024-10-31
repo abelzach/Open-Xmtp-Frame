@@ -70,7 +70,8 @@ const handleRequest = frames(async (ctx) => {
       </div>
     ),
     imageOptions: {
-      dynamic: true,
+      width: 100,
+      height: 100,
     },
     buttons: [
         <Button action="post" target="/">Go Back</Button>,

@@ -9,7 +9,7 @@ const handleRequest = frames(async (ctx) => {
     iAm = (await ctx.message.walletAddress()) ?? "anonymous";
   }
   console.log(`Current user: ${iAm}`); 
-  
+
   const contenders = [
     {
       name: "Contender 1",
@@ -94,7 +94,8 @@ const handleRequest = frames(async (ctx) => {
       </div>
     ),
     imageOptions: {
-      dynamic: true,
+      width: 100,
+      height: 100,
     },
     buttons: [
       <Button action="post" target="/gameDetails">
