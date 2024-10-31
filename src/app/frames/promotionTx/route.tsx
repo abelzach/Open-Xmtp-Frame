@@ -73,7 +73,7 @@ export const POST = frames(async (ctx) => {
     }
 
     // const userAddress = ctx.message.address;
-    const voteId = BigInt(parseInt(ctx.message.inputText));
+    const voteId = BigInt(parseInt(ctx.message.inputText) || 1);
 
     const voteValue = ctx.searchParams.voteValue;
     if (typeof(voteValue) !== "boolean") {

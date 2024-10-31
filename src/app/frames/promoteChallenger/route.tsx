@@ -97,6 +97,7 @@ const handleRequest = frames(async (ctx) => {
       width: 100,
       height: 100,
     },
+    textInput: "Enter Promotion Amount",
     buttons: [
         <Button action="post" target="/gameDetails">
             Go Back
