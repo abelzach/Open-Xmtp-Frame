@@ -18,7 +18,7 @@ const handleRequest = frames(async (ctx) => {
         tw="relative w-full h-full flex items-center justify-center text-white text-[48px] shadow-lg rounded-md overflow-hidden"
       >
         <img
-          src="https://coolbackgrounds.io/images/backgrounds/index/sea-edge-79ab30e2.png" // Replace with the path to your static image
+          src="https://wallpapers.com/images/hd/kung-fu-panda-and-shifu-doing-push-ups-7v8t48684njolvd1.jpg"
           alt="Background"
           tw="absolute inset-0 w-full h-full object-cover opacity-80"
         />
@@ -26,9 +26,10 @@ const handleRequest = frames(async (ctx) => {
           style={{
             display: "flex",
             margin: "100px",
-            fontWeight: '300'
+            fontWeight: '300',
+            paddingBottom: '400px'
           }}
-          tw="relative z-10"
+          tw="relative z-10 text-black font-extrabold"
         >
           Who can outlast the burn and push their limits to claim the title of
           push-up champ?
@@ -38,7 +39,7 @@ const handleRequest = frames(async (ctx) => {
     imageOptions: {
       dynamic: true,
     },
-    buttons: [<Button action="post" target="/gameDetails">Let's go?</Button>],
+    buttons: [<Button action="post" target="/gameDetails">Let's go!!</Button>],
   };
 });
 
