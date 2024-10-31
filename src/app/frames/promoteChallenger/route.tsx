@@ -98,15 +98,29 @@ const handleRequest = frames(async (ctx) => {
       height: 100,
     },
     buttons: [
-      <Button action="post" target="/gameDetails">
-        Go Back
-      </Button>,
-      <Button action="post" target="/promoteChallenger">
-        Promote Contender 1
-      </Button>,
-      <Button action="post" target="/promoteChallenger">
-        Promote Contender 2
-      </Button>,
+        <Button action="post" target="/gameDetails">
+            Go Back
+        </Button>,
+        <Button 
+            action="tx"
+            target={{
+                href: "/promotionTx",
+                query: { voteValue: true 
+            }}}
+            post_url="/"
+        >
+            Promote Contender 1
+        </Button>,
+        <Button 
+            action="tx"
+            target={{
+                href: "/promotionTx",
+                query: { voteValue: false 
+            }}}
+            post_url="/"
+        >
+            Promote Contender 2
+        </Button>,
     ],
   };
 });
