@@ -72,9 +72,8 @@ const handleRequest = frames(async (ctx) => {
       dynamic: true,
     },
     buttons: [
-      <Button action="post">
-        Promote
-      </Button>,
+        <Button action="post" target="/promoteChallenger">Promote</Button>,
+        <Button action="post" target="/">Go Back</Button>
     ],
   };
 });
