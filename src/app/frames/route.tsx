@@ -8,6 +8,7 @@ const handleRequest = frames(async (ctx) => {
   if (ctx.message) {
     iAm = (await ctx.message.walletAddress()) ?? "anonymous";
   }
+  console.log(`Current user: ${iAm}`); 
 
   return {
     image: (
@@ -39,7 +40,7 @@ const handleRequest = frames(async (ctx) => {
     imageOptions: {
       dynamic: true,
     },
-    buttons: [<Button action="post" target="/gameDetails">Let's go!!</Button>],
+    buttons: [<Button action="post" target="/gameDetails">Lets go!!</Button>],
   };
 });
 
