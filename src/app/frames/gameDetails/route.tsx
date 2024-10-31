@@ -40,7 +40,7 @@ const handleRequest = frames(async (ctx) => {
         tw="bg-gray-900 text-white text-[24px] shadow-lg rounded-md overflow-hidden"
       >
         <img
-          src="https://static.wikia.nocookie.net/kungfupanda/images/a/a3/PoTraining1.jpg/revision/latest/scale-to-width-down/1200?cb=20110804052139"
+          src="https://mrwallpaper.com/images/hd/kung-fu-panda-and-shifu-training-together-7tjh169g71i8dhl4.jpg"
           alt="Background"
           tw="absolute w-full h-full object-cover opacity-80"
         />
@@ -60,7 +60,7 @@ const handleRequest = frames(async (ctx) => {
             tw="flex flex-col items-center"
           >
             <h2 tw="text-4xl font-semibold mb-4">{contender.name}</h2>
-            <hr tw="w-full border-t-2 border-white mb-4" />
+            <hr tw="w-3/4 border-t-2 border-white mb-4" />
             <p tw="text-3xl mb-2">Strength: {contender.strength}</p>
             <p tw="text-3xl mb-2">Endurance: {contender.endurance}</p>
             <p tw="text-3xl mb-2">Push-up Count: {contender.pushUpCount}</p>
@@ -72,8 +72,8 @@ const handleRequest = frames(async (ctx) => {
       dynamic: true,
     },
     buttons: [
-        <Button action="post" target="/promoteChallenger">Promote</Button>,
-        <Button action="post" target="/">Go Back</Button>
+        <Button action="post" target="/">Go Back</Button>,
+        <Button action="post" target="/promoteChallenger">Promote</Button>
     ],
   };
 });
