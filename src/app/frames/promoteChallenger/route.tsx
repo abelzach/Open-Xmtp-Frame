@@ -40,6 +40,7 @@ const handleRequest = frames(async (ctx) => {
           gap: "20px",
           height: "100%",
           flexDirection: "column",
+          backgroundColor: "#ff7e5f"
         }}
         tw="bg-gray-700 text-white text-[24px] shadow-lg rounded-md overflow-hidden"
       >
