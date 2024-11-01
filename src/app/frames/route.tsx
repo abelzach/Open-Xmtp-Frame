@@ -11,7 +11,7 @@ const handleRequest = frames(async (ctx) => {
   console.log(`Current user: ${iAm}`); 
 
   return {
-    image: "https://wallpapers.com/images/hd/kung-fu-panda-and-shifu-doing-push-ups-7v8t48684njolvd1.jpg",
+    image: "https://raw.githubusercontent.com/abelzach/Color-Palette/main/frame1.jpg",
     imageOptions: {
       dynamic: true,
       headers: {
