@@ -75,10 +75,24 @@ export const POST = frames(async (ctx) => {
     // const userAddress = ctx.message.address;
     const voteId = BigInt(parseInt(ctx.message.inputText) || 1);
 
-    const voteValue = ctx.searchParams.voteValue;
-    if (typeof(voteValue) !== "boolean") {
+    let voteValue: string | boolean = ctx.searchParams.voteValue as string;
+    if (typeof(voteValue) !== "string") {
         console.log("Query param not boolean")
-        throw new Error("No query Param");
+        throw new Error(`No query Param: ${JSON.stringify(ctx.searchParams)}`);
+    }
+    switch (voteValue) {
+        case "true": {
+            voteValue = true;
+            break;
+        }
+        case "false": {
+            voteValue = false;
+            break;
+        }
+        default: {
+            voteValue = true;
+            break;
+        }
     }
     console.log("VoteValue: ", voteValue)
 

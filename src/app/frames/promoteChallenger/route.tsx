@@ -102,20 +102,20 @@ const handleRequest = frames(async (ctx) => {
         <Button 
             action="tx"
             target={{
-                href: "/promotionTx",
-                query: { voteValue: true 
-            }}}
-            post_url="/"
+                pathname: "/promotionTx",
+                query: { voteValue: true }
+            }}
+            post_url="/promotionStatus"
         >
             Promote Contender 1
         </Button>,
         <Button 
             action="tx"
             target={{
-                href: "/promotionTx",
-                query: { voteValue: false 
-            }}}
-            post_url="/"
+                pathname: "/promotionTx",
+                query: { voteValue: false }
+            }}
+            post_url="/promotionStatus"
         >
             Promote Contender 2
         </Button>,
