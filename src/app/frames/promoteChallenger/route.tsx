@@ -8,6 +8,7 @@ const handleRequest = frames(async (ctx) => {
   if (ctx.message) {
     iAm = (await ctx.message.walletAddress()) ?? "anonymous";
   }
+  const gameId = ctx.searchParams.id
   console.log(`Current user: ${iAm}`); 
 
   const contenders = [
@@ -103,7 +104,10 @@ const handleRequest = frames(async (ctx) => {
             action="tx"
             target={{
                 pathname: "/promotionTx",
-                query: { voteValue: true }
+                query: { 
+                    id: gameId,
+                    voteValue: true
+                }
             }}
             post_url="/promotionStatus"
         >
@@ -113,7 +117,10 @@ const handleRequest = frames(async (ctx) => {
             action="tx"
             target={{
                 pathname: "/promotionTx",
-                query: { voteValue: false }
+                query: { 
+                    id: gameId,
+                    voteValue: false 
+                }
             }}
             post_url="/promotionStatus"
         >

@@ -1,10 +1,17 @@
 import { openframes } from "frames.js/middleware";
 import { createFrames } from "frames.js/next";
 import { getXmtpFrameMessage, isXmtpFrameActionPayload } from "frames.js/xmtp";
+
+export type State = {
+  id: string;
+};
  
-export const frames = createFrames({
+export const frames = createFrames<State>({
   // basePath must point to the route of initial frame
   // in this case it will reside in app/frames/route.tsx therefore /frames
+   initialState: {
+    id: "",
+  },
   basePath: "/frames",
   middleware: [
     openframes({

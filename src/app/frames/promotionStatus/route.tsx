@@ -11,6 +11,7 @@ const handleRequest = frames(async (ctx) => {
     txId = ctx.message?.transactionId;
     console.log(iAm, txId)
   }
+  const gameId = ctx.searchParams.id
  
   return {
     image: (
@@ -37,7 +38,7 @@ const handleRequest = frames(async (ctx) => {
       dynamic: true,
     },
     buttons: [
-        <Button action="post" target="/">Go Back</Button>
+        <Button action="post" target={{ pathname: "/", query: {id: gameId} }}>Go Back</Button>
     ],
   };
 });

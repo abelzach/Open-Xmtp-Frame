@@ -1,9 +1,11 @@
 /* eslint-disable react/jsx-key */
 import { Button } from "frames.js/next";
-import { frames } from "./frames";
+import { frames } from "@/app/frames/frames";
+import { NextRequest } from "next/server";
 
-const handleRequest = frames(async (ctx) => {
+const handler = frames(async (ctx) => {
   let iAm: string | undefined;
+  const gameId = ctx.searchParams.id
 
   if (ctx.message) {
     iAm = (await ctx.message.walletAddress()) ?? "anonymous";
@@ -13,12 +15,11 @@ const handleRequest = frames(async (ctx) => {
   return {
     image: "https://raw.githubusercontent.com/abelzach/Color-Palette/main/frame1.jpg",
     imageOptions: {
-      dynamic: true,
       headers: {
         "Cache-Control": "max-age=1",
       }
     },
-    buttons: [<Button action="post" target="/gameDetails">Lets go!!</Button>],
+    buttons: [<Button action="post" target={{ pathname: "/gameDetails", query: {id: gameId}}}>Lets go!!</Button>],
   };
 });
 
@@ -27,6 +28,5 @@ const handleRequest = frames(async (ctx) => {
         //   alt="Background"
         //   tw="absolute inset-0 w-full h-full object-cover opacity-80"
         // />
-export const GET = handleRequest;
-export const POST = handleRequest;
-
+export const GET = handler;
+export const POST = handler;

@@ -5,10 +5,13 @@ import { frames } from "@/app/frames/frames";
 const handleRequest = frames(async (ctx) => {
   let iAm: string | undefined;
 
+  const gameId = ctx.searchParams.id
+
   if (ctx.message) {
     iAm = (await ctx.message.walletAddress()) ?? "anonymous";
   }
   console.log(`Current user: ${iAm}`); 
+  console.log(`State: ${gameId}`); 
 
   const contenders = [
     {
@@ -62,6 +65,7 @@ const handleRequest = frames(async (ctx) => {
             <p tw="text-3xl mb-2">Strength: {contender.strength}</p>
             <p tw="text-3xl mb-2">Endurance: {contender.endurance}</p>
             <p tw="text-3xl mb-2">Push-up Count: {contender.pushUpCount}</p>
+            <p tw="text-3xl mb-2">ID: {gameId}</p>
           </div>
         ))}
       </div>
@@ -72,7 +76,7 @@ const handleRequest = frames(async (ctx) => {
     },
     buttons: [
         <Button action="post" target="/">Go Back</Button>,
-        <Button action="post" target="/promoteChallenger">Promote</Button>
+        <Button action="post" target={{pathname: "/promoteChallenger", query: { id: gameId}}}>Promote</Button>
     ],
   };
 });
