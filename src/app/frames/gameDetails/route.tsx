@@ -37,6 +37,7 @@ const handleRequest = frames(async (ctx) => {
           width: "100%",
           gap: "20px",
           height: "100%",
+          background: "linear-gradient(90deg, #ff7e5f, #feb47b)"
         }}
         tw="bg-gray-900 text-white text-[24px] shadow-lg rounded-md overflow-hidden"
       >
