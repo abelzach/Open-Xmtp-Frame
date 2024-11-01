@@ -40,11 +40,7 @@ const handleRequest = frames(async (ctx) => {
         }}
         tw="bg-gray-900 text-white text-[24px] shadow-lg rounded-md overflow-hidden"
       >
-        <img
-          src="https://mrwallpaper.com/images/hd/kung-fu-panda-and-shifu-training-together-7tjh169g71i8dhl4.jpg"
-          alt="Background"
-          tw="absolute w-full h-full object-cover opacity-80"
-        />
+        
 
         {contenders.map((contender, index) => (
           <div
@@ -82,3 +78,9 @@ const handleRequest = frames(async (ctx) => {
 
 export const GET = handleRequest;
 export const POST = handleRequest;
+
+// <img
+//           src="https://mrwallpaper.com/images/hd/kung-fu-panda-and-shifu-training-together-7tjh169g71i8dhl4.jpg"
+//                         alt="Background"
+//                     tw="absolute w-full h-full object-cover opacity-80"
+//                             />

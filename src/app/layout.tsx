@@ -1,7 +1,8 @@
-import type { Metadata } from "next";
 import localFont from "next/font/local";
 import "./globals.css";
+import type { Metadata } from "next";
 import { fetchMetadata } from "frames.js/next";
+
 
 const geistSans = localFont({
   src: "./fonts/GeistVF.woff",
@@ -15,16 +16,17 @@ const geistMono = localFont({
 });
 
 export async function generateMetadata(): Promise<Metadata> {
-  const frameTags = await fetchMetadata(
-    new URL(
-      "/frames",
-      process.env.VERCEL_URL
-        ? `https://${process.env.VERCEL_URL}`
-        : "http://localhost:3000"
-      )
-  );
   return {
-    other: frameTags,
+    title: "Challengers",
+    // provide a full URL to your /frames endpoint
+    other: await fetchMetadata(
+      new URL(
+        "/frames",
+        process.env.NEXT_PUBLIC_SITE_URL
+          ? `https://${process.env.NEXT_PUBLIC_SITE_URL}`
+          : "http://localhost:3000",
+      ).toString(),
+    ),
   };
 }
 

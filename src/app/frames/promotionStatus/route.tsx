@@ -19,11 +19,7 @@ const handleRequest = frames(async (ctx) => {
         }}
         tw="relative w-full h-full flex items-center justify-center text-white text-[48px] shadow-lg rounded-md overflow-hidden"
       >
-        <img
-          src="https://coolbackgrounds.io/images/backgrounds/index/sea-edge-79ab30e2.png" // Replace with the path to your static image
-          alt="Background"
-          tw="absolute inset-0 w-full h-full object-cover opacity-80"
-        />
+        
         <div
           style={{
             display: "flex",
@@ -48,3 +44,9 @@ const handleRequest = frames(async (ctx) => {
 export const GET = handleRequest;
 export const POST = handleRequest;
 
+
+// <img
+//           src="https://coolbackgrounds.io/images/backgrounds/index/sea-edge-79ab30e2.png" // Replace with the path to your static image
+//                         alt="Background"
+//                     tw="absolute inset-0 w-full h-full object-cover opacity-80"
+//                             />

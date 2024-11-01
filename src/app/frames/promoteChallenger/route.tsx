@@ -43,11 +43,7 @@ const handleRequest = frames(async (ctx) => {
         }}
         tw="bg-gray-700 text-white text-[24px] shadow-lg rounded-md overflow-hidden"
       >
-        <img
-          src="https://static.wikia.nocookie.net/kungfupanda/images/a/a3/PoTraining1.jpg/revision/latest/scale-to-width-down/1200?cb=20110804052139"
-          alt="Background"
-          tw="absolute w-full h-full object-cover opacity-80"
-        />
+        
 
         <h1
           style={{
@@ -128,3 +124,9 @@ const handleRequest = frames(async (ctx) => {
 
 export const GET = handleRequest;
 export const POST = handleRequest;
+
+// <img
+//           src="https://static.wikia.nocookie.net/kungfupanda/images/a/a3/PoTraining1.jpg/revision/latest/scale-to-width-down/1200?cb=20110804052139"
+//                         alt="Background"
+//                     tw="absolute w-full h-full object-cover opacity-80"
+//                             />

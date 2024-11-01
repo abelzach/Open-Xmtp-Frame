@@ -18,11 +18,6 @@ const handleRequest = frames(async (ctx) => {
         }}
         tw="relative w-full h-full flex items-center justify-center text-white text-[48px] shadow-lg rounded-md overflow-hidden"
       >
-        <img
-          src="https://wallpapers.com/images/hd/kung-fu-panda-and-shifu-doing-push-ups-7v8t48684njolvd1.jpg"
-          alt="Background"
-          tw="absolute inset-0 w-full h-full object-cover opacity-80"
-        />
         <div
           style={{
             display: "flex",
@@ -45,5 +40,10 @@ const handleRequest = frames(async (ctx) => {
   };
 });
 
+        // <img
+        //   src="https://wallpapers.com/images/hd/kung-fu-panda-and-shifu-doing-push-ups-7v8t48684njolvd1.jpg"
+        //   alt="Background"
+        //   tw="absolute inset-0 w-full h-full object-cover opacity-80"
+        // />
 export const GET = handleRequest;
 export const POST = handleRequest;
