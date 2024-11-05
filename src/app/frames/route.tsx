@@ -9,6 +9,7 @@ const handler = frames(async (ctx) => {
   if (ctx.message) {
     iAm = (await ctx.message.walletAddress()) ?? "anonymous";
   }
+  
   console.log(`Current user: ${iAm}`);
   if (gameId == "pushup") {
     return {
