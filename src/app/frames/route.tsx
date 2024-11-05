@@ -1,7 +1,6 @@
 /* eslint-disable react/jsx-key */
 import { Button } from "frames.js/next";
 import { frames } from "@/app/frames/frames";
-import { NextRequest } from "next/server";
 
 const handler = frames(async (ctx) => {
   let iAm: string | undefined;

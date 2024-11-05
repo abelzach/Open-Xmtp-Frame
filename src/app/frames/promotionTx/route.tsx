@@ -1,70 +1,8 @@
 /* eslint-disable react/jsx-key */
 import { frames } from "@/app/frames/frames";
-import { transaction } from "frames.js/core";
-import { Abi, encodeFunctionData } from "viem";
+import { Button} from "frames.js/core";
+import QRCode from "qrcode";
 
-const contractAddress = "0xdc0A0D70bf0418DA345D98190E24d4D70FD38bA1";
-const chainId = "eip155:11155111";
-const contractAbi = [
-  {
-    inputs: [
-      {
-        internalType: "bool",
-        name: "_vote",
-        type: "bool",
-      },
-      {
-        internalType: "uint256",
-        name: "voteId",
-        type: "uint256",
-      },
-    ],
-    name: "vote",
-    outputs: [],
-    stateMutability: "nonpayable",
-    type: "function",
-  },
-  {
-    inputs: [
-      {
-        internalType: "uint256",
-        name: "",
-        type: "uint256",
-      },
-    ],
-    name: "voteRegistry",
-    outputs: [
-      {
-        internalType: "bool",
-        name: "",
-        type: "bool",
-      },
-    ],
-    stateMutability: "view",
-    type: "function",
-  },
-  {
-    inputs: [
-      {
-        internalType: "uint256",
-        name: "voteId",
-        type: "uint256",
-      },
-    ],
-    name: "voteResult",
-    outputs: [
-      {
-        internalType: "bool",
-        name: "",
-        type: "bool",
-      },
-    ],
-    stateMutability: "view",
-    type: "function",
-  },
-];
-
- 
 export const POST = frames(async (ctx) => {
     // Do something with the request data to generate transaction data
     if (!ctx.message) {
@@ -72,47 +10,53 @@ export const POST = frames(async (ctx) => {
         throw new Error("No message");
     }
 
-    // const userAddress = ctx.message.address;
-    const voteId = BigInt(parseInt(ctx.message.inputText || "1"));
+    const voteId = parseInt(ctx.message.inputText || "1");
 
     const gameId = ctx.searchParams.id
 
-    let voteValue: string | boolean = ctx.searchParams.voteValue as string;
-    if (typeof(voteValue) !== "string") {
-        console.log("Query param not boolean")
-        throw new Error(`No query Param: ${JSON.stringify(ctx.searchParams)}`);
-    }
-    switch (voteValue) {
-        case "true": {
-            voteValue = true;
-            break;
-        }
-        case "false": {
-            voteValue = false;
-            break;
-        }
-        default: {
-            voteValue = true;
-            break;
-        }
-    }
-    console.log("VoteValue: ", voteValue)
+    const voteValue: string | boolean = ctx.searchParams.voteValue as string;
 
-    // Create calldata for the transaction using Viem's `encodeFunctionData`
-    const calldata = encodeFunctionData({
-        abi: contractAbi,
-        functionName: "vote",
-        args: [voteValue, voteId],
-    });
+    const transactionLink = `${process.env.NEXT_PUBLIC_WEB_URL || "http://localhost:3000"}/tx?gameId=${gameId}&voteId=${voteId}&voteValue=${voteValue}`;
 
-    // Return transaction data that conforms to the correct type
-    return transaction({
-        chainId: chainId,
-        method: "eth_sendTransaction",
-        params: {
-            abi: contractAbi as Abi,
-            to: contractAddress,
-            data: calldata,
-        },
-    });
+    const qrCodeDataURL = await QRCode.toDataURL(transactionLink);
+    console.log(`QR: ${qrCodeDataURL}`)
+
+    return {
+        image: (
+            <div
+                style={{
+                    display: "flex",
+                    flexDirection: "column",
+                    alignItems: "center",
+                    justifyContent: "center",
+                    padding: "20px",
+                    width: "100%",
+                    height: "100%",
+                    backgroundColor: "#ff7e5f",
+                    color: "#fff",
+                    borderRadius: "10px",
+                    textAlign: "center",
+                    gap: "10px",
+                }}
+                tw="bg-gray-900 text-white text-[24px] shadow-lg rounded-md overflow-hidden"
+            >
+                <p style={{ fontSize: "50px", fontWeight: "bold" }}>
+                    Scan the QR code or press the link below:
+                </p>
+                <img
+                    src={qrCodeDataURL}
+                    alt="Transaction QR Code"
+                    style={{
+                        width: "300px",
+                        height: "300px",
+                        marginTop: "10px",
+                    }}
+                />
+            </div>
+        ),
+        buttons: [
+            <Button action="link" target={transactionLink}>Tx Link</Button>,
+            <Button action="post" target="/">Home</Button>,
+        ]
+    }
 });

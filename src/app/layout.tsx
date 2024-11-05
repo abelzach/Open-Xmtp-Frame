@@ -2,6 +2,7 @@ import localFont from "next/font/local";
 import "./globals.css";
 import type { Metadata } from "next";
 import { fetchMetadata } from "frames.js/next";
+import { appURL } from "@/lib/util";
 
 
 const geistSans = localFont({
@@ -22,9 +23,7 @@ export async function generateMetadata(): Promise<Metadata> {
     other: await fetchMetadata(
       new URL(
         "/frames",
-        process.env.NEXT_PUBLIC_SITE_URL
-          ? `https://${process.env.NEXT_PUBLIC_SITE_URL}`
-          : "http://localhost:3000",
+        appURL(),
       ).toString(),
     ),
   };

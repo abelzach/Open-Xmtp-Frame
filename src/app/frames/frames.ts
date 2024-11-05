@@ -25,7 +25,6 @@ export const frames = createFrames<State>({
           if (!isXmtpFrameActionPayload(body)) {
             return undefined;
           }
- 
           return getXmtpFrameMessage(body);
         },
       },

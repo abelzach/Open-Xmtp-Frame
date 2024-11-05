@@ -101,7 +101,7 @@ const handleRequest = frames(async (ctx) => {
             Go Back
         </Button>,
         <Button 
-            action="tx"
+            action="post"
             target={{
                 pathname: "/promotionTx",
                 query: { 
@@ -109,12 +109,11 @@ const handleRequest = frames(async (ctx) => {
                     voteValue: true
                 }
             }}
-            post_url="/promotionStatus"
         >
             Promote Contender 1
         </Button>,
         <Button 
-            action="tx"
+            action="post"
             target={{
                 pathname: "/promotionTx",
                 query: { 
@@ -122,7 +121,6 @@ const handleRequest = frames(async (ctx) => {
                     voteValue: false 
                 }
             }}
-            post_url="/promotionStatus"
         >
             Promote Contender 2
         </Button>,
